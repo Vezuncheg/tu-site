@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Стримером в ТикТоке — честная версия | TeamUniverse</title>
+<meta name="description" content="Как на самом деле устроен заработок стримеров в ТикТоке: стартовые цифры, условия, кастинг без оплат. Пройдите честный тест — иногда он отвечает «не сейчас».">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Manrope:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* TeamUniverse — общие стили трёх страниц */
+:root{
+  --bg:#0C0A1E; --surface:rgba(30,24,66,.55); --surface2:#1E1842;
+  --text:#F1EFFB; --muted:#A29FC4; --line:rgba(139,120,255,.22);
+  --violet:#7B61FF; --cyan:#4FD8E0; --pink:#FF2D9C; --green:#3DDC97;
+  --radius:16px; --maxw:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{transition:none!important}}
+body{color:var(--text);font-family:'Manrope',system-ui,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(900px 600px at 85% -5%,rgba(123,97,255,.35),transparent 60%),
+             radial-gradient(800px 620px at 8% 100%,rgba(255,45,156,.22),transparent 60%),
+             linear-gradient(165deg,#0C0A1E 0%,#181040 48%,#2A1048 100%);
+  background-attachment:fixed}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Unbounded',sans-serif;font-weight:600;line-height:1.18;letter-spacing:-.01em}
+h1{font-size:clamp(1.7rem,4.6vw,3rem)}
+h2{font-size:clamp(1.3rem,3vw,1.9rem);margin-bottom:14px}
+h3{font-size:1.05rem;margin-bottom:8px}
+p{color:var(--muted)}
+strong{color:var(--text);font-weight:700}
+a{color:var(--cyan);text-decoration:none}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(12,10,30,.8);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:26px;height:64px}
+.logo{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.05rem;color:var(--text)}
+.logo em{font-style:normal;background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav .links{display:flex;gap:22px;margin-left:auto}
+nav .links a{color:var(--muted);font-size:.92rem}
+nav .links a:hover{color:var(--text)}
+@media(max-width:760px){nav .links{display:none}}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:700;font-size:.95rem;
+  transition:transform .15s ease,box-shadow .15s ease}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.btn-primary{background:linear-gradient(100deg,var(--violet),var(--pink));color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,45,156,.35)}
+.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--cyan)}
+nav .btn{margin-left:auto;padding:9px 18px}
+nav .links + .btn{margin-left:0}
+
+/* hero */
+.hero{padding:76px 0 60px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-40% -20% auto;height:130%;pointer-events:none;
+  background:radial-gradient(620px 340px at 78% 18%,rgba(123,97,255,.28),transparent 65%),
+             radial-gradient(520px 320px at 12% 82%,rgba(255,45,156,.16),transparent 60%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .95fr;gap:48px;align-items:center}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.hero p.lead{margin:18px 0 28px;font-size:1.08rem;max-width:34em}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+
+/* verification card */
+.verify{position:relative;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:26px;backdrop-filter:blur(8px)}
+.verify::before{content:"";position:absolute;inset:-2px;border-radius:var(--radius);z-index:-1;
+  background:radial-gradient(70% 90% at 50% 115%,rgba(123,97,255,.5),rgba(255,45,156,.25) 55%,transparent 75%);filter:blur(22px)}
+.verify .vh{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.verify .vh span{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted)}
+.verify .dot{width:9px;height:9px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 10px var(--green)}
+.verify ul{list-style:none}
+.verify li{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line);
+  font-size:.94rem;color:var(--text)}
+.verify li::before{content:"✓";color:var(--green);font-weight:800}
+
+/* battle bar divider — фирменная сигнатура */
+.battle{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.battle .bar{position:relative;height:10px;border-radius:999px;overflow:hidden;
+  background:linear-gradient(90deg,var(--cyan) 0 62%,var(--pink) 62% 100%)}
+.battle .bar::after{content:"";position:absolute;left:62%;top:-3px;bottom:-3px;width:3px;
+  background:var(--bg)}
+.battle .cap{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;color:var(--muted);margin-top:8px;letter-spacing:.08em}
+
+/* sections */
+section{padding:64px 0}
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.g3,.g4,.g2{grid-template-columns:1fr}}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px;backdrop-filter:blur(6px)}
+.card.glow::before{content:"";position:absolute;inset:-1px;border-radius:var(--radius);z-index:-1;
+  background:radial-gradient(60% 80% at 50% 110%,rgba(255,45,156,.35),transparent 70%);filter:blur(18px)}
+.card h3{color:var(--text)}
+.card p{font-size:.95rem}
+
+/* stats strip */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{border-left:2px solid var(--cyan);padding-left:16px}
+.stat b{font-family:'JetBrains Mono',monospace;font-size:1.7rem;font-weight:700;color:var(--text);display:block}
+.stat span{font-size:.85rem;color:var(--muted)}
+
+/* case cards */
+.case .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.case .name{font-weight:800;color:var(--text)}
+.case .tag{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted)}
+.case dl{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:.92rem}
+.case dt{color:var(--muted)}
+.case dd{font-family:'JetBrains Mono',monospace;color:var(--text);text-align:right}
+.case dd.now{color:var(--green)}
+.honest-note{margin-top:18px;padding:16px 20px;border:1px dashed var(--line);border-radius:var(--radius);
+  font-size:.93rem;color:var(--muted)}
+.honest-note b{color:var(--green)}
+
+/* steps */
+.step{position:relative;padding-left:0}
+.step .k{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.8rem;margin-bottom:8px}
+
+/* Q&A honesty */
+.qa{border-top:1px solid var(--line)}
+.qa div{display:grid;grid-template-columns:1fr 1.4fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+@media(max-width:760px){.qa div{grid-template-columns:1fr}}
+.qa .q{font-weight:700;color:var(--text)}
+.qa .a{color:var(--muted);font-size:.96rem}
+.qa .a b{color:var(--green)}
+
+/* red flags / conditions */
+.cond li{display:flex;gap:12px;padding:10px 0;color:var(--muted);font-size:.97rem}
+.cond li::before{content:"—";color:var(--pink);font-weight:800}
+.cond.ok li::before{content:"✓";color:var(--green)}
+ul.cond{list-style:none}
+
+/* CTA band */
+.band{background:linear-gradient(120deg,rgba(79,216,224,.10),rgba(110,139,255,.10));
+  border:1px solid var(--line);border-radius:var(--radius);padding:44px 34px;text-align:center}
+.band h2{margin-bottom:10px}
+.band p{max-width:36em;margin:0 auto 24px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px 0 60px;font-size:.88rem;color:var(--muted)}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:26px}
+@media(max-width:760px){footer .wrap{grid-template-columns:1fr}}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--text)}
+.tiny{font-size:.78rem;opacity:.75;margin-top:14px}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* фото-коллаж команды (стиль старого сайта: неоновые фото со сдвигом) */
+.collage{display:grid;grid-template-columns:1fr 2fr 1fr;gap:14px;align-items:center}
+@media(max-width:860px){.collage{grid-template-columns:1fr 1fr}}
+.collage img{width:100%;border-radius:16px;object-fit:cover;display:block;
+  background:linear-gradient(140deg,#2A1D5E,#4A1650);min-height:120px}
+.collage .main{grid-row:span 2;min-height:340px}
+.collage .side{display:grid;gap:14px}
+.about-facts{list-style:none;margin-top:18px}
+.about-facts li{display:flex;gap:12px;padding:8px 0;color:var(--muted)}
+.about-facts li::before{content:"●";color:var(--violet);font-size:.7rem;line-height:2.1}
+.stat b{background:linear-gradient(90deg,#fff,#C9BEFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat{border-left-color:var(--violet)}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="index.html">Team<em>Universe</em></a>
+    <div class="links">
+      <a href="#truth">Как есть</a>
+      <a href="#types">Типажи</a>
+      <a href="#cond">Условия</a>
+      <a href="index.html">Об агентстве</a>
+    </div>
+    <a class="btn btn-primary" href="https://t.me/Tik_Tok_team_bot?start=test">Пройти тест</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Для тех, кто думает про стримы</div>
+      <h1>Стримы в ТикТоке:<br>версия без сказок</h1>
+      <p class="lead">Зрители из США, Европы и Залива донатят стримершам во время эфиров
+        и PK-баттлов. Это работа с настоящими деньгами — и с настоящими условиями.
+        Ниже — как всё устроено на самом деле. Начать можно с честного теста:
+        он иногда отвечает «не сейчас».</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="https://t.me/Tik_Tok_team_bot?start=test">Тест: подхожу ли я — 3 минуты</a>
+        <a class="btn btn-ghost" href="https://t.me/Tik_Tok_team_bot?start=casting">Сразу на кастинг</a>
+      </div>
+    </div>
+    <aside class="verify" aria-label="Коротко о главном">
+      <div class="vh"><span>Коротко о главном</span><span class="dot" aria-hidden="true"></span></div>
+      <ul>
+        <li>0 ₽ на входе: агентство живёт на проценте с вашего дохода</li>
+        <li>Первый месяц у большинства — 5–20 тыс. ₽, и это нормально</li>
+        <li>База донатеров строится 2–3 месяца регулярных эфиров</li>
+        <li>Основной прайм — вечер и ночь по МСК (аудитория за океаном)</li>
+        <li>Это кастинг: мы отбираем, а не продаём</li>
+      </ul>
+    </aside>
+  </div>
+</header>
+
+<div class="battle" role="presentation">
+  <div class="bar"></div>
+  <div class="cap"><span>ваша команда</span><span>соперница · 5 минут таймера</span></div>
+</div>
+
+<section id="truth">
+  <div class="wrap">
+    <div class="eyebrow">Как есть</div>
+    <h2>Три правды, которые скрывают другие</h2>
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card"><h3>Старт — скромный</h3>
+        <p>Первый месяц у наших стримерш — обычно 5–20 тыс. ₽, у единиц доходит до 100 тыс. Кто обещает «сотни тысяч
+        новичку» — зарабатывает не на стримах, а на вас.</p></div>
+      <div class="card"><h3>Недели 2–4 — самые тяжёлые</h3>
+        <p>«Долина смерти»: первый восторг прошёл, база ещё не собралась. Здесь сливается
+        большинство одиночек. Задача куратора — провести через это место.</p></div>
+      <div class="card"><h3>Потолка нет, но он далеко</h3>
+        <p>Топы ростера выходят на сотни тысяч в месяц — за 2–3 года регулярной работы.
+        Не за месяц. Реальные цифры — каждый понедельник в <a href="[ЗАГЛУШКА: канал]">канале</a>.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="types">
+  <div class="wrap">
+    <div class="eyebrow">Типажи</div>
+    <h2>Модельная внешность не нужна. Нужен типаж</h2>
+    <p style="max-width:42em">Донатят за эмоцию и принадлежность, а не за внешность из каталога.
+      Стабильно зарабатывают четыре разных типажа:</p>
+    <div class="grid g4" style="margin-top:26px">
+      <div class="card"><h3>⚡ Энерджайзер</h3><p>Драйв и азарт. Стихия PK-баттлов — а баттлы делают ~70% донатов.</p></div>
+      <div class="card"><h3>🌙 Собеседница</h3><p>Спокойные эфиры-разговоры, самая лояльная база. Здесь 30+ — преимущество.</p></div>
+      <div class="card"><h3>🎨 Талант</h3><p>Поёт, рисует, готовит в кадре. Донат = аплодисменты.</p></div>
+      <div class="card"><h3>😎 Своя в доску</h3><p>Без глянца, с самоиронией. Аудитория донатит «подруге» — годами.</p></div>
+    </div>
+    <div class="cta-row" style="margin-top:26px">
+      <a class="btn btn-primary" href="https://t.me/Tik_Tok_team_bot?start=test">Узнать свой типаж в тесте</a>
+    </div>
+  </div>
+</section>
+
+<div class="battle" role="presentation"><div class="bar" style="background:linear-gradient(90deg,var(--cyan) 0 71%,var(--pink) 71% 100%)"></div>
+<div class="cap"><span>ваша сторона · 71%</span><span>финальный рывок</span></div></div>
+
+<section id="cond">
+  <div class="wrap">
+    <div class="grid g2">
+      <div>
+        <div class="eyebrow">Условия — честно</div>
+        <h2>Что понадобится</h2>
+        <ul class="cond ok">
+          <li>18 лет и старше — без исключений</li>
+          <li>От 10 часов эфиров в неделю, лучше 15–20</li>
+          <li>Готовность к вечерним и ночным эфирам (платящая аудитория — за океаном)</li>
+          <li>Горизонт 2–3 месяца до стабильных денег</li>
+          <li>Смартфон, свет, стабильный интернет — стартовый набор стоит [ЗАГЛУШКА] ₽ и покупается где угодно</li>
+        </ul>
+      </div>
+      <div>
+        <div class="eyebrow">Чего у нас нет</div>
+        <h2>Чего не будет</h2>
+        <ul class="cond">
+          <li>Платных «обучений», взносов и наценок на оборудование</li>
+          <li>Гарантий дохода — их не существует ни у кого</li>
+          <li>Доступа к вашему аккаунту «для продвижения»</li>
+          <li>Штрафов за выход из договора</li>
+        </ul>
+        <p style="margin-top:14px;font-size:.92rem">Проверяйте так любое агентство:
+          <a href="https://t.me/Tik_Tok_team_bot?start=antiscam">чек-лист из 12 пунктов</a> — бесплатно в боте.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="band">
+      <h2>Начните с теста</h2>
+      <p>3 минуты, 10 вопросов. Покажет ваш типаж, его реальные диапазоны и главное —
+        совпадают ли ваши условия с теми, без которых здесь не зарабатывает никто.
+        Иногда тест честно отвечает «не сейчас» — и это тоже результат.</p>
+      <a class="btn btn-primary" href="https://t.me/Tik_Tok_team_bot?start=test">Пройти тест в Telegram</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="logo" style="margin-bottom:10px">Team<em>Universe</em></div>
+      <p class="tiny">[ЗАГЛУШКА: юрлицо, ИНН/ОГРН] · Не является публичной офертой.
+        Результаты индивидуальны и зависят от работы стримера. 18+</p>
+    </div>
+    <div><p><strong>Разделы</strong></p>
+      <p><a href="index.html">Об агентстве</a><br><a href="biznes.html">Партнёрам</a></p></div>
+    <div><p><strong>Контакты</strong></p>
+      <p><a href="https://t.me/Tik_Tok_team_bot">Telegram-бот</a></p></div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
+document.querySelectorAll('section .card,.cond li').forEach(el=>{el.classList.add('reveal');io.observe(el)});
+</script>
+</body>
+</html>

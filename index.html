@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TeamUniverse — агентство стримеров в ТикТоке. Реальные цифры, честный кастинг</title>
+<meta name="description" content="Агентство TeamUniverse развивает стримеров в ТикТоке: PK-баттлы, международная аудитория, обучение. Публикуем реальные цифры каждую неделю. Кастинг бесплатный.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@600;700&family=Manrope:wght@400;700;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* TeamUniverse — общие стили трёх страниц */
+:root{
+  --bg:#0C0A1E; --surface:rgba(30,24,66,.55); --surface2:#1E1842;
+  --text:#F1EFFB; --muted:#A29FC4; --line:rgba(139,120,255,.22);
+  --violet:#7B61FF; --cyan:#4FD8E0; --pink:#FF2D9C; --green:#3DDC97;
+  --radius:16px; --maxw:1080px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{transition:none!important}}
+body{color:var(--text);font-family:'Manrope',system-ui,sans-serif;
+  font-size:17px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  background:radial-gradient(900px 600px at 85% -5%,rgba(123,97,255,.35),transparent 60%),
+             radial-gradient(800px 620px at 8% 100%,rgba(255,45,156,.22),transparent 60%),
+             linear-gradient(165deg,#0C0A1E 0%,#181040 48%,#2A1048 100%);
+  background-attachment:fixed}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+h1,h2,h3{font-family:'Unbounded',sans-serif;font-weight:600;line-height:1.18;letter-spacing:-.01em}
+h1{font-size:clamp(1.7rem,4.6vw,3rem)}
+h2{font-size:clamp(1.3rem,3vw,1.9rem);margin-bottom:14px}
+h3{font-size:1.05rem;margin-bottom:8px}
+p{color:var(--muted)}
+strong{color:var(--text);font-weight:700}
+a{color:var(--cyan);text-decoration:none}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* nav */
+nav{position:sticky;top:0;z-index:50;background:rgba(12,10,30,.8);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;gap:26px;height:64px}
+.logo{font-family:'Unbounded',sans-serif;font-weight:700;font-size:1.05rem;color:var(--text)}
+.logo em{font-style:normal;background:linear-gradient(90deg,var(--violet),var(--pink));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav .links{display:flex;gap:22px;margin-left:auto}
+nav .links a{color:var(--muted);font-size:.92rem}
+nav .links a:hover{color:var(--text)}
+@media(max-width:760px){nav .links{display:none}}
+.btn{display:inline-block;padding:13px 24px;border-radius:999px;font-weight:700;font-size:.95rem;
+  transition:transform .15s ease,box-shadow .15s ease}
+.btn:focus-visible,a:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.btn-primary{background:linear-gradient(100deg,var(--violet),var(--pink));color:#fff}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(255,45,156,.35)}
+.btn-ghost{border:1px solid var(--line);color:var(--text)}
+.btn-ghost:hover{border-color:var(--cyan)}
+nav .btn{margin-left:auto;padding:9px 18px}
+nav .links + .btn{margin-left:0}
+
+/* hero */
+.hero{padding:76px 0 60px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-40% -20% auto;height:130%;pointer-events:none;
+  background:radial-gradient(620px 340px at 78% 18%,rgba(123,97,255,.28),transparent 65%),
+             radial-gradient(520px 320px at 12% 82%,rgba(255,45,156,.16),transparent 60%)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:1.25fr .95fr;gap:48px;align-items:center}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr}}
+.eyebrow{font-family:'JetBrains Mono',monospace;font-size:.78rem;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--cyan);margin-bottom:16px}
+.hero p.lead{margin:18px 0 28px;font-size:1.08rem;max-width:34em}
+.cta-row{display:flex;gap:14px;flex-wrap:wrap}
+
+/* verification card */
+.verify{position:relative;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:26px;backdrop-filter:blur(8px)}
+.verify::before{content:"";position:absolute;inset:-2px;border-radius:var(--radius);z-index:-1;
+  background:radial-gradient(70% 90% at 50% 115%,rgba(123,97,255,.5),rgba(255,45,156,.25) 55%,transparent 75%);filter:blur(22px)}
+.verify .vh{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.verify .vh span{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--muted)}
+.verify .dot{width:9px;height:9px;border-radius:50%;background:var(--green);
+  box-shadow:0 0 10px var(--green)}
+.verify ul{list-style:none}
+.verify li{display:flex;gap:12px;padding:11px 0;border-top:1px solid var(--line);
+  font-size:.94rem;color:var(--text)}
+.verify li::before{content:"✓";color:var(--green);font-weight:800}
+
+/* battle bar divider — фирменная сигнатура */
+.battle{max-width:var(--maxw);margin:0 auto;padding:0 22px}
+.battle .bar{position:relative;height:10px;border-radius:999px;overflow:hidden;
+  background:linear-gradient(90deg,var(--cyan) 0 62%,var(--pink) 62% 100%)}
+.battle .bar::after{content:"";position:absolute;left:62%;top:-3px;bottom:-3px;width:3px;
+  background:var(--bg)}
+.battle .cap{display:flex;justify-content:space-between;font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;color:var(--muted);margin-top:8px;letter-spacing:.08em}
+
+/* sections */
+section{padding:64px 0}
+.grid{display:grid;gap:18px}
+.g3{grid-template-columns:repeat(3,1fr)}
+.g4{grid-template-columns:repeat(4,1fr)}
+.g2{grid-template-columns:repeat(2,1fr)}
+@media(max-width:860px){.g3,.g4,.g2{grid-template-columns:1fr}}
+.card{position:relative;background:var(--surface);border:1px solid var(--line);
+  border-radius:var(--radius);padding:24px;backdrop-filter:blur(6px)}
+.card.glow::before{content:"";position:absolute;inset:-1px;border-radius:var(--radius);z-index:-1;
+  background:radial-gradient(60% 80% at 50% 110%,rgba(255,45,156,.35),transparent 70%);filter:blur(18px)}
+.card h3{color:var(--text)}
+.card p{font-size:.95rem}
+
+/* stats strip */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+@media(max-width:860px){.stats{grid-template-columns:repeat(2,1fr)}}
+.stat{border-left:2px solid var(--cyan);padding-left:16px}
+.stat b{font-family:'JetBrains Mono',monospace;font-size:1.7rem;font-weight:700;color:var(--text);display:block}
+.stat span{font-size:.85rem;color:var(--muted)}
+
+/* case cards */
+.case .top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:14px}
+.case .name{font-weight:800;color:var(--text)}
+.case .tag{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--muted)}
+.case dl{display:grid;grid-template-columns:1fr auto;gap:6px 12px;font-size:.92rem}
+.case dt{color:var(--muted)}
+.case dd{font-family:'JetBrains Mono',monospace;color:var(--text);text-align:right}
+.case dd.now{color:var(--green)}
+.honest-note{margin-top:18px;padding:16px 20px;border:1px dashed var(--line);border-radius:var(--radius);
+  font-size:.93rem;color:var(--muted)}
+.honest-note b{color:var(--green)}
+
+/* steps */
+.step{position:relative;padding-left:0}
+.step .k{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:.8rem;margin-bottom:8px}
+
+/* Q&A honesty */
+.qa{border-top:1px solid var(--line)}
+.qa div{display:grid;grid-template-columns:1fr 1.4fr;gap:20px;padding:20px 0;border-bottom:1px solid var(--line)}
+@media(max-width:760px){.qa div{grid-template-columns:1fr}}
+.qa .q{font-weight:700;color:var(--text)}
+.qa .a{color:var(--muted);font-size:.96rem}
+.qa .a b{color:var(--green)}
+
+/* red flags / conditions */
+.cond li{display:flex;gap:12px;padding:10px 0;color:var(--muted);font-size:.97rem}
+.cond li::before{content:"—";color:var(--pink);font-weight:800}
+.cond.ok li::before{content:"✓";color:var(--green)}
+ul.cond{list-style:none}
+
+/* CTA band */
+.band{background:linear-gradient(120deg,rgba(79,216,224,.10),rgba(110,139,255,.10));
+  border:1px solid var(--line);border-radius:var(--radius);padding:44px 34px;text-align:center}
+.band h2{margin-bottom:10px}
+.band p{max-width:36em;margin:0 auto 24px}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:40px 0 60px;font-size:.88rem;color:var(--muted)}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:26px}
+@media(max-width:760px){footer .wrap{grid-template-columns:1fr}}
+footer a{color:var(--muted)}
+footer a:hover{color:var(--text)}
+.tiny{font-size:.78rem;opacity:.75;margin-top:14px}
+
+/* reveal on scroll */
+.reveal{opacity:0;transform:translateY(14px);transition:opacity .5s ease,transform .5s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* фото-коллаж команды (стиль старого сайта: неоновые фото со сдвигом) */
+.collage{display:grid;grid-template-columns:1fr 2fr 1fr;gap:14px;align-items:center}
+@media(max-width:860px){.collage{grid-template-columns:1fr 1fr}}
+.collage img{width:100%;border-radius:16px;object-fit:cover;display:block;
+  background:linear-gradient(140deg,#2A1D5E,#4A1650);min-height:120px}
+.collage .main{grid-row:span 2;min-height:340px}
+.collage .side{display:grid;gap:14px}
+.about-facts{list-style:none;margin-top:18px}
+.about-facts li{display:flex;gap:12px;padding:8px 0;color:var(--muted)}
+.about-facts li::before{content:"●";color:var(--violet);font-size:.7rem;line-height:2.1}
+.stat b{background:linear-gradient(90deg,#fff,#C9BEFF);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat{border-left-color:var(--violet)}
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a class="logo" href="index.html">Team<em>Universe</em></a>
+    <div class="links">
+      <a href="#team">Команда</a>
+      <a href="#cases">Кейсы</a>
+      <a href="#how">Как мы работаем</a>
+      <a href="#honest">Проверьте нас</a>
+      <a href="zarabotok.html">Стримерам</a>
+    </div>
+    <a class="btn btn-primary" href="https://t.me/Tik_Tok_team_bot?start=test">Пройти тест</a>
+  </div>
+</nav>
+
+<header class="hero">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow">Агентство стримеров · ТикТок · донаты из США, Европы и Залива</div>
+      <h1>Мы не обещаем доходы.<br>Мы их показываем.</h1>
+      <p class="lead">TeamUniverse — агентство, которое развивает стримеров в ТикТоке: PK-баттлы,
+        международная аудитория, обучение и сопровождение. Каждый понедельник публикуем
+        реальные цифры ростера — их можно проверить, отлистав канал назад.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="[ЗАГЛУШКА: ссылка на канал]">Канал с цифрами</a>
+        <a class="btn btn-ghost" href="https://t.me/Tik_Tok_team_bot?start=test">Тест: подходишь ли ты</a>
+      </div>
+    </div>
+    <aside class="verify" aria-label="Проверка агентства">
+      <div class="vh"><span>Проверка агентства</span><span class="dot" aria-hidden="true"></span></div>
+      <ul>
+        <li>Официальный партнёр одного из крупнейших китайских агентств ТикТока</li>
+        <li>0 ₽ на входе — зарабатываем только процент с дохода стримерш</li>
+        <li>Договор — до старта, выход — без штрафов</li>
+        <li>Цифры ростера публикуются каждую неделю</li>
+        <li>Действующие стримерши, чьи эфиры можно посмотреть сейчас</li>
+      </ul>
+    </aside>
+  </div>
+</header>
+
+<div class="battle" role="presentation">
+  <div class="bar"></div>
+  <div class="cap"><span>наша сторона · 62%</span><span>PK-баттл · так делаются ~70% донатов</span></div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="stats">
+      <div class="stat"><b>25+</b><span>стримеров спродюсировали с полного нуля</span></div>
+      <div class="stat"><b>с 2023</b><span>работаем на рынке</span></div>
+      <div class="stat"><b>США · ЕС · Залив</b><span>география донатов наших эфиров</span></div>
+      <div class="stat"><b>50%</b><span>доля стримерши по договору</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="team">
+  <div class="wrap">
+    <div class="eyebrow">Команда</div>
+    <h2>Мы — TeamUniverse. Лица, а не аноним в интернете</h2>
+    <div class="grid g2" style="margin-top:26px;align-items:center">
+      <div class="collage">
+        <div class="side">
+          <img src="img/streamer-1.jpg" alt="Стримерша TeamUniverse в неоновом свете">
+          <img src="img/streamer-2.jpg" alt="Стримерша TeamUniverse">
+        </div>
+        <img class="main" src="img/team.jpg" alt="Основатели TeamUniverse">
+        <div class="side">
+          <img src="img/streamer-3.jpg" alt="Стримерша TeamUniverse в эфире">
+          <img src="img/streamer-4.jpg" alt="Стримерша TeamUniverse">
+        </div>
+      </div>
+      <div>
+        <p>Продюсируем стримеров в ТикТоке с нуля: находим, обучаем, выводим на
+          международную аудиторию и организуем PK-баттлы.</p>
+        <ul class="about-facts">
+          <li>Запустились в 2023 году</li>
+          <li>Больше года выстраивали способ стримить из РФ, зарабатывать и спокойно выводить деньги</li>
+          <li>Спродюсировали первых 25 человек до результата с полного нуля</li>
+          <li>Работаем как официальный партнёр одной из крупнейших китайских структур ТикТока</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cases">
+  <div class="wrap">
+    <div class="eyebrow">Кейсы ростера</div>
+    <h2>Стартовые цифры маленькие. И это правда.</h2>
+    <p style="max-width:40em">Первый месяц почти у всех скромный — база донатеров строится
+      месяцами регулярной работы. Показываем как есть: старт и текущий уровень.</p>
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card case">
+        <div class="top"><span class="name">Настя</span><span class="tag">3 г. 8 мес. в команде</span></div>
+        <dl>
+          <dt>Первый месяц</dt><dd>100 000 ₽</dd>
+          <dt>Сейчас</dt><dd class="now">700 тыс. – 1,5 млн ₽/мес</dd>
+        </dl>
+      </div>
+      <div class="card case">
+        <div class="top"><span class="name">Алина</span><span class="tag">1,5 года в команде</span></div>
+        <dl>
+          <dt>Первый месяц</dt><dd>13 000 ₽</dd>
+          <dt>Сейчас</dt><dd class="now">200–600 тыс. ₽/мес</dd>
+        </dl>
+      </div>
+      <div class="card case">
+        <div class="top"><span class="name">Ангелина</span><span class="tag">1,5 года в команде</span></div>
+        <dl>
+          <dt>Первый месяц</dt><dd>5 000 ₽</dd>
+          <dt>Сейчас</dt><dd class="now">100 000+ ₽/мес</dd>
+        </dl>
+      </div>
+    </div>
+    <div class="honest-note"><b>Почему мы показываем маленькие стартовые цифры?</b>
+      Потому что они настоящие. Агентства, обещающие «сотни тысяч в первый месяц», врут —
+      у нас об этом есть отдельный <a href="https://t.me/Tik_Tok_team_bot?start=antiscam">чек-лист проверки агентств</a>.
+      До стабильного дохода доходят не все: это работа, а не кнопка «бабло».</div>
+  </div>
+</section>
+
+<div class="battle" role="presentation"><div class="bar" style="background:linear-gradient(90deg,var(--cyan) 0 48%,var(--pink) 48% 100%)"></div>
+<div class="cap"><span>счёт равный</span><span>последняя минута решает</span></div></div>
+
+<section id="how">
+  <div class="wrap">
+    <div class="eyebrow">Как мы работаем</div>
+    <h2>Кастинг → обучение → первый эфир</h2>
+    <div class="grid g3" style="margin-top:26px">
+      <div class="card step"><div class="k">Шаг 1 · Кастинг</div>
+        <h3>Анкета и видео-визитка</h3>
+        <p>2 минуты анкеты + 30 секунд видео. Бесплатно ≠ гарантия сотрудничества:
+        это отбор — мы вкладываем время кураторов в каждую стримершу.</p></div>
+      <div class="card step"><div class="k">Шаг 2 · Подготовка</div>
+        <h3>Куратор и система</h3>
+        <p>Окно вещания под платящую аудиторию, скрипты, тактика PK-баттлов,
+        разборы эфиров. Всё, что мы собрали на десятках запусков.</p></div>
+      <div class="card step"><div class="k">Шаг 3 · Старт</div>
+        <h3>Первые эфиры и запускной баттл</h3>
+        <p>Новеньких мы разгоняем PK-баттлами с топами ростера — аудитория topов
+        видит новичка, и круг «стримлю в пустоту» размыкается.</p></div>
+    </div>
+    <div class="cta-row" style="margin-top:26px">
+      <a class="btn btn-primary" href="https://t.me/Tik_Tok_team_bot?start=casting">Подать заявку на кастинг</a>
+      <a class="btn btn-ghost" href="zarabotok.html">Подробнее для стримеров</a>
+    </div>
+  </div>
+</section>
+
+<section id="honest">
+  <div class="wrap">
+    <div class="eyebrow">Проверьте нас</div>
+    <h2>5 вопросов, которые стоит задать любому агентству</h2>
+    <p style="max-width:42em">Задайте их нам — и любым нашим «конкурентам». По ответам всё станет ясно.</p>
+    <div class="qa" style="margin-top:22px">
+      <div><span class="q">Сколько я должна заплатить, чтобы начать?</span>
+        <span class="a"><b>Ничего.</b> Мы зарабатываем процент с дохода стримерш. Просят взнос «за обучение» — уходите.</span></div>
+      <div><span class="q">На чём зарабатывает агентство?</span>
+        <span class="a"><b>На проценте с вашего дохода</b> и на бонусах платформы за показатели ростера. Нет вашего дохода — нет нашего.</span></div>
+      <div><span class="q">Можно посмотреть договор до старта?</span>
+        <span class="a"><b>Да.</b> Доли — цифрами, условия выхода — без штрафов и «компенсаций за обучение».</span></div>
+      <div><span class="q">Покажете действующих стримерш?</span>
+        <span class="a"><b>Да</b> — эфиры по расписанию, которые можно открыть прямо сейчас. Не скрины «наших звёзд», а живые люди.</span></div>
+      <div><span class="q">Гарантируете доход?</span>
+        <span class="a"><b>Нет.</b> Гарантий в этой индустрии не существует — есть статистика и система. Кто гарантирует — врёт.</span></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="band">
+      <h2>Думаете о своём агентстве?</h2>
+      <p>Мы упаковали модель TeamUniverse для партнёров: баттл-сеть, методология,
+        обучение и сопровождение. Подробности — на странице партнёрства.</p>
+      <a class="btn btn-ghost" href="biznes.html">Партнёрство и франшиза</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <div class="logo" style="margin-bottom:10px">Team<em>Universe</em></div>
+      <p>Агентство стримеров в ТикТоке. Официальный партнёр одного из крупнейших
+        китайских агентств платформы.</p>
+      <p class="tiny">[ЗАГЛУШКА: юрлицо, ИНН/ОГРН, адрес] · Не является публичной офертой.
+        Результаты индивидуальны и зависят от работы стримера.</p>
+    </div>
+    <div>
+      <p><strong>Разделы</strong></p>
+      <p><a href="zarabotok.html">Стримерам</a><br><a href="biznes.html">Партнёрам</a><br>
+        <a href="[ЗАГЛУШКА: ссылка на канал]">Канал с цифрами</a></p>
+    </div>
+    <div>
+      <p><strong>Контакты</strong></p>
+      <p><a href="https://t.me/Tik_Tok_team_bot">Telegram-бот</a><br>
+        <a href="mailto:[ЗАГЛУШКА]">[ЗАГЛУШКА: email]</a></p>
+    </div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>es.forEach(e=>e.isIntersecting&&e.target.classList.add('in')),{threshold:.12});
+document.querySelectorAll('section .card,section .stat,.qa div').forEach(el=>{el.classList.add('reveal');io.observe(el)});
+</script>
+</body>
+</html>
